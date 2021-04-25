@@ -74,13 +74,67 @@ const promptUser = () => {
                     return false;
                 }
             }
-        }
-        // {
-        //     type: 'rawlist',
-        //     name: 'license',
-        //     message: 'What type of license is on your project?'
-        // }
-           
+        },
+        {
+            type: 'rawlist',
+            name: 'license',
+            message: 'What type of license is on your project?',
+            choices: ["GNU AGPLv3", "GNU GPLv3", "GNU LGPLv3", "Mozilla Public License 2.0", "Apache License 2.0", "MIT (recommended)", "Boost Software License 1.0", "The Unlicense"]
+        },
+        {
+            type: 'confirm',
+            name: 'confirmFeatures',
+            message: "Would you like to add a Features section? If your project has a lot of features, this is recommended",
+            default: true 
+        },
+        {
+            type: 'input',
+            name: 'features',
+            message: "Describe your features.",
+            when: ({ confirmFeatures }) => {
+                if (confirmFeatures) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }, 
+        {
+            type: 'input',
+            name: 'Contributing',
+            message: "Add guidelines for other developers to contribute to your project."
+        },
+        {
+            type: 'input',
+            name: 'tests',
+            message: "Write tests for your app and provide explaination about them."
+        },
+        {
+            type: 'input',
+            name: 'github',
+            message: "Enter your GitHub Username. (Required)",
+            validate: githubInput => {
+              if (githubInput) {
+                return true;
+              } else {
+                console.log('Please enter your GitHub Username!');
+                return false;
+              }
+            }
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: "Enter your E-mail. (Required)",
+            validate: emailInput => {
+                if (emailInput) {
+                  return true;
+                } else {
+                  console.log('Please enter E-mail!');
+                  return false;
+                }
+              }
+        }  
     ]);
 }
 
