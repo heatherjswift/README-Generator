@@ -3,7 +3,7 @@ const inquirer = require('inquirer');
 //const generateReadme = require('./src/README-template');
 
 // TODO: Create an array of questions for user input
-const questions = () => {
+const promptUser = () => {
     return inquirer.prompt([
         {
             type: 'input',
@@ -17,6 +17,9 @@ const questions = () => {
                     return false;
                 }
             }
+        },
+        {
+            type: 'input'
         }
     ]);
 }
@@ -29,4 +32,4 @@ const questions = () => {
 
 // // Function call to initialize app
 // init();
-//questions();
+//promptUser();
