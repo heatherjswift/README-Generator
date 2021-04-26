@@ -10,31 +10,20 @@ ${creditsText}
 `;
 };
 
-const generateLicense = licenseChoice => {
-    if (!licenseChoice) {
-        return '';
-    }
-
-    return `
-## License
-![License: ${licenseChoice}](https://img.shields.io/badge/License-${licenseChoice}-blue.svg)
-Follow the link for more information on this license. https://choosealicense.com/licenses/${licenseChoice}
-`;
-};
-
 const generateFeatures = featuresText => {
     if (!featuresText) {
         return '';
     }
 
     return `
+
 ## Features
 ${featuresText}
 `;
 };
 
 module.exports = templateData => {
-    const {credits, features, license} = templateData;
+    const {credits, features} = templateData;
     console.log(templateData, "templateData")
     return `
 # ${templateData.projectTitle}
@@ -45,18 +34,20 @@ ${templateData.description}
 ## Table of Contents
 * [Installation](#installation)
 * [Usage](#usage)
-
+* [License](#license) 
 * [Contributing](#contributing)
 * [Tests](#tests)
-* [Questions](#questions)
+* [Questions and more](#questions)
 
 ## Installation
 ${templateData.installation}
 
 ## Usage
-${templateData.usage} ${generateCredits(credits)}
+${templateData.usage} 
 
-${generateLicense(license)}  ${generateFeatures(features)}
+## License
+![License: ${templateData.license}](https://img.shields.io/badge/License-${templateData.license}-blue.svg)
+Follow the link for more information on this license. https://choosealicense.com/licenses/${templateData.license}
 
 ## Contributing
 ${templateData.contributing}
@@ -66,12 +57,7 @@ ${templateData.tests}
 
 ## Questions
 If you have any questions please contact me through gitHub [${templateData.github}](https://github.com/${templateData.github}) or through my E-mail [${templateData.email}](mailto:${templateData.email})
-`
-
+${generateCredits(credits)} 
+${generateFeatures(features)}
+`;
 };
-
-
-
-// ${generateCredits(creditsLink)}
-// ${generateLicense(licenseLink)}   
-// ${generateFeatures(featuresLink)}

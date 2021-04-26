@@ -1,8 +1,8 @@
 
-# My project!
+# My project
 
 ## Description
-generic description
+this is it's description
 
 ## Table of Contents
 * [Installation](#installation)
@@ -13,30 +13,30 @@ generic description
 * [Questions and more](#questions)
 
 ## Installation
-install some things
+install this and that and this
 
 ## Usage
-make a readme 
+use it to do a thing 
 
 ## License
 ![License: mit](https://img.shields.io/badge/License-mit-blue.svg)
 Follow the link for more information on this license. https://choosealicense.com/licenses/mit
 
 ## Contributing
-anything
+Be nice, pay attention, have fun
 
 ## Tests
-TDD
+use TDD
 
 ## Questions
 If you have any questions please contact me through gitHub [janedoe](https://github.com/janedoe) or through my E-mail [janedoe@yahoo.ca](mailto:janedoe@yahoo.ca)
 
 
 ## Credits
-friends and family
+i'd like to thank my family
  
 
 
 ## Features
-All the features!
+it has so many features!
 
