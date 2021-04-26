@@ -47,7 +47,7 @@ const promptUser = () => {
         },
         {
             type: 'input',
-            name: 'Usage',
+            name: 'usage',
             message: "Provide instructions and examples for use. (Required)",
             validate: usageInput => {
                 if (usageInput) {
@@ -80,7 +80,7 @@ const promptUser = () => {
             type: 'rawlist',
             name: 'license',
             message: 'What type of license is on your project?',
-            choices: ["GNU AGPLv3", "GNU GPLv3", "GNU LGPLv3", "Mozilla Public License 2.0", "Apache License 2.0", "MIT (recommended)", "Boost Software License 1.0", "The Unlicense"]
+            choices: ["agpl-3.0", "gpl-3.0", "lgpl-3.0", "mpl-2.0", "apache-2.0", "mit", "bsl-1.0", "unlicense"]
         },
         {
             type: 'confirm',
@@ -102,7 +102,7 @@ const promptUser = () => {
         }, 
         {
             type: 'input',
-            name: 'Contributing',
+            name: 'contributing',
             message: "Add guidelines for other developers to contribute to your project."
         },
         {
@@ -141,9 +141,9 @@ const promptUser = () => {
 
 // TODO: Create a function to write README file
 // function writeToFile(fileName, data) {}
-const writeFile = (filename, data) => {
+const writeFile =  data => {
     return new Promise((resolve, reject) => {
-        fs.writeFile('.dist/README.md', filename, data, err => {
+        fs.writeFile('./dist/README.md', generateReadme(data), err => {
             if (err) {
                 reject(err);
                 return;

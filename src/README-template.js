@@ -1,43 +1,77 @@
-module.exports = templateData => {
-    const {} = templateData;
+const generateCredits = creditsText => {
+    if (!creditsText) {
+        return '';
+    }
 
     return `
-    #${projectTitle}
 
-    ## Description
-    ${description}
+## Credits
+${creditsText}
+`;
+};
 
-    ## Table of Contents
-    * [Installation](#installation)
-    * [Usage](#usage)
-    ${generateCredits(credits)}
-    * [License](#license)
-    ${generateFeatures(features)}
-    * [Contributing](#contributing)
-    * [Tests](#tests)
-    * [Questions](#questions)
-    
-    ## Installation
-    ${installation}
+const generateLicense = licenseChoice => {
+    if (!licenseChoice) {
+        return '';
+    }
 
-    ## Usage
-    ${usage}
+    return `
+## License
+![License: ${licenseChoice}](https://img.shields.io/badge/License-${licenseChoice}-blue.svg)
+Follow the link for more information on this license. https://choosealicense.com/licenses/${licenseChoice}
+`;
+};
 
-    ${generateCredits(credits)}
+const generateFeatures = featuresText => {
+    if (!featuresText) {
+        return '';
+    }
 
-    ## License
-    ${license}
+    return `
+## Features
+${featuresText}
+`;
+};
 
-    ${generateFeatures(features)}
+module.exports = templateData => {
+    const {credits, features, license} = templateData;
+    console.log(templateData, "templateData")
+    return `
+# ${templateData.projectTitle}
 
-    ## Contributing
-    ${contributing}
+## Description
+${templateData.description}
 
-    ## Tests
-    ${tests}
+## Table of Contents
+* [Installation](#installation)
+* [Usage](#usage)
 
-    ## Questions
-    If you have any questions please contact me through gitHub ${gitHubUsername} or through my E-mail ${email}
-    `
+* [Contributing](#contributing)
+* [Tests](#tests)
+* [Questions](#questions)
 
-}
+## Installation
+${templateData.installation}
+
+## Usage
+${templateData.usage} ${generateCredits(credits)}
+
+${generateLicense(license)}  ${generateFeatures(features)}
+
+## Contributing
+${templateData.contributing}
+
+## Tests
+${templateData.tests}
+
+## Questions
+If you have any questions please contact me through gitHub [${templateData.github}](https://github.com/${templateData.github}) or through my E-mail [${templateData.email}](mailto:${templateData.email})
+`
+
+};
+
+
+
+// ${generateCredits(creditsLink)}
+// ${generateLicense(licenseLink)}   
+// ${generateFeatures(featuresLink)}
